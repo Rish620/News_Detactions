@@ -1,0 +1,33 @@
+{
+  "samples": 50,
+  "train_samples": 37,
+  "test_samples": 13,
+  "test_accuracy": 1.0,
+  "classification_report": {
+    "FAKE": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "REAL": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 7.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 13.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 13.0
+    }
+  }
+}

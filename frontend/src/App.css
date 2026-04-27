@@ -1,0 +1,118 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+
+.App-header {
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.App-header p {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.App-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.input-section {
+  margin-bottom: 30px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  resize: vertical;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #4a90d9, #6c5ce7);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(74, 144, 217, 0.4);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.result-badge {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.result-badge.real {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+.result-badge.fake {
+  background: linear-gradient(135deg, #d63031, #e17055);
+}
+
+.confidence {
+  margin-bottom: 20px;
+  color: #ddd;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.explanation {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.explanation h3 {
+  margin-top: 0;
+  color: #4a90d9;
+}
+
+.explanation p {
+  line-height: 1.6;
+  color: #ddd;
+}
