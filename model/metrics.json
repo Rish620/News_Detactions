@@ -1,33 +1,39 @@
 {
-  "samples": 50,
-  "train_samples": 37,
-  "test_samples": 13,
-  "test_accuracy": 1.0,
+  "samples": 80,
+  "train_samples": 60,
+  "test_samples": 20,
+  "test_accuracy": 0.8,
+  "cross_validation_accuracy_mean": 0.8875,
+  "cross_validation_accuracy_std": 0.07288689868556626,
   "classification_report": {
     "FAKE": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
-      "support": 6.0
+      "precision": 0.875,
+      "recall": 0.7,
+      "f1-score": 0.7777777777777778,
+      "support": 10.0
     },
     "REAL": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
-      "support": 7.0
+      "precision": 0.75,
+      "recall": 0.9,
+      "f1-score": 0.8181818181818182,
+      "support": 10.0
     },
-    "accuracy": 1.0,
+    "accuracy": 0.8,
     "macro avg": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
-      "support": 13.0
+      "precision": 0.8125,
+      "recall": 0.8,
+      "f1-score": 0.797979797979798,
+      "support": 20.0
     },
     "weighted avg": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1-score": 1.0,
-      "support": 13.0
+      "precision": 0.8125,
+      "recall": 0.8,
+      "f1-score": 0.7979797979797979,
+      "support": 20.0
     }
-  }
+  },
+  "notes": [
+    "The dataset is very small, so real-world web articles should be treated cautiously.",
+    "The API can return UNCERTAIN when the text is too short, unfamiliar, or weakly supported."
+  ]
 }
