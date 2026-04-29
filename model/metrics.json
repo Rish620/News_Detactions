@@ -3,8 +3,6 @@
   "train_samples": 60,
   "test_samples": 20,
   "test_accuracy": 0.8,
-  "cross_validation_accuracy_mean": 0.8875,
-  "cross_validation_accuracy_std": 0.07288689868556626,
   "classification_report": {
     "FAKE": {
       "precision": 0.875,
@@ -31,9 +29,5 @@
       "f1-score": 0.7979797979797979,
       "support": 20.0
     }
-  },
-  "notes": [
-    "The dataset is very small, so real-world web articles should be treated cautiously.",
-    "The API can return UNCERTAIN when the text is too short, unfamiliar, or weakly supported."
-  ]
+  }
 }

@@ -1,6 +1,6 @@
 
 from news_detector.training import train_and_save
-=======
+
 import json
 import os
 import pickle
@@ -56,7 +56,7 @@ def main() -> None:
         stop_words="english",
         ngram_range=(1, 2),
         sublinear_tf=True,
-        max_features=5000,
+        max_features=7000,
     )
     X_train_vectors = vectorizer.fit_transform(X_train)
     X_test_vectors = vectorizer.transform(X_test)
@@ -103,7 +103,7 @@ def main() -> None:
     print(f"Train samples: {metrics['train_samples']}")
     print(f"Test samples: {metrics['test_samples']}")
     print(f"Test accuracy: {metrics['test_accuracy']:.2%}")
-    if metrics["cross_validation_accuracy_mean"] is not None:
+    if "cross_validation_accuracy_mean" in metrics and metrics["cross_validation_accuracy_mean"] is not None:
         print(
             "Cross-validation accuracy: "
             f"{metrics['cross_validation_accuracy_mean']:.2%} "
