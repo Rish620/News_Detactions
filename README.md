@@ -64,6 +64,34 @@ npm start
 - `POST /predict` - Analyze news text
 - `GET /metrics` - Show model evaluation metrics
 
+
+## Machine Learning Model
+
+This project uses Logistic Regression for Fake News Detection.
+
+### NLP Techniques Used
+
+- Text Cleaning
+- Stopword Removal
+- TF-IDF Vectorization
+- Unigram and Bigram Analysis
+
+### Model Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+
+### Generated Files
+
+- model.pkl
+- vectorizer.pkl
+- metrics.json
+
+These files are used by the FastAPI backend for prediction and result analysis.
+
+
 ### Example Request
 
 ```json
