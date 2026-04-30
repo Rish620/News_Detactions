@@ -2,9 +2,6 @@
 
 > Full-stack AI-powered fake news detection using ML + optional LLM (Ollama/Mistral) explanations and live web verification.
 
-## Live App Demo
-
-![App demo recording](C:\Users\rishu\.gemini\antigravity\brain\92bc4919-24c3-402f-a58d-1635cb25e748\app_demo.webp)
 
 ---
 
@@ -18,7 +15,6 @@
 | **Frontend & UI/UX** | 9/10 | ✅ Excellent |
 | **Error Handling & Resilience** | 8.5/10 | ✅ Very Good |
 | **Security** | 7/10 | ⚠️ Acceptable |
-| **Testing** | 3/10 | 🔴 Needs Work |
 | **Documentation** | 8.5/10 | ✅ Very Good |
 | **Performance** | 7.5/10 | ⚠️ Good |
 | **SEO & Accessibility** | 5/10 | ⚠️ Needs Improvement |
@@ -39,13 +35,7 @@ Apptad_final_projects/
 ├── train_model.py     # Model training entrypoint
 └── README.md
 ```
-<!-- slide -->
-### What's Done Well
-- **Clean separation of concerns**: Backend, frontend, ML package, data, and model artifacts are all in distinct directories
-- **Shared `news_detector/` package**: Properly structured Python package with `__init__.py`, clean module separation (config, data, prediction, training, explanation, verification)
-- **Config centralized**: All paths (`MODEL_PATH`, `DATA_PATH`, `METRICS_PATH`) live in [config.py](file:///c:/Users/rishu/OneDrive/Desktop/Apptad_final_projects/news_detector/config.py)
-- **Pipeline architecture**: Training is decoupled from the API — you can retrain without touching the server
-````
+
 
 > [!TIP]
 > The architecture is very well thought out for a project of this scale. The `news_detector` package being importable by both the training script and the API server is a smart design choice.
@@ -70,17 +60,7 @@ Apptad_final_projects/
 - **Web verification** — Bing News RSS integration adds real-world evidence layer
 - **Three distinct analysis layers**: ML prediction → Web verification → LLM explanation
 
-### Areas for Improvement
 
-> [!WARNING]
-> **No input validation on text length** — The `/predict` endpoint accepts arbitrarily long strings. A malicious user could send a 10MB payload and cause memory/CPU issues.
-
-- **No rate limiting** — API is unprotected against abuse
-- **No async handlers** — The `predict` endpoint calls `verify_with_web()` (HTTP to Bing) and `get_llm_explanation()` (HTTP to Ollama) synchronously, blocking the event loop
-- **No API versioning** — Consider `/api/v1/predict` for future-proofing
-- **Missing `vectorizer.pkl` reference** — There's a `vectorizer.pkl` in the model directory but it's not used; the vectorizer is embedded inside the Pipeline
-
----
 
 ## 3. ML Pipeline (7/10) ⚠️
 
@@ -105,17 +85,7 @@ Apptad_final_projects/
 - **Uncertainty system** — The multi-factor `UNCERTAIN` detection (word count, vocab coverage, confidence thresholds, suspicious patterns) is sophisticated and well-designed
 - **Bilingual support** — Hindi suspicious patterns included alongside English
 
-### Critical Limitation
 
-> [!CAUTION]
-> **Only 80 samples** in the training dataset. This is the single biggest weakness of the project. The model works well for texts similar to training data, but will return `UNCERTAIN` for most real-world inputs because vocabulary coverage will be very low.
-
-- **No text preprocessing** beyond TF-IDF defaults — consider stemming, lemmatization
-- **No model versioning** — When you retrain, the old model is overwritten
-- **Orphan `vectorizer.pkl`** (15KB) in model directory — not used by the Pipeline; should be cleaned up
-- **`max_features` caps** (8000 word, 6000 char) are overkill for 80 samples — these numbers are fine but won't be reached until dataset grows
-
----
 
 ## 4. Frontend & UI/UX (9/10) ✅
 
@@ -139,14 +109,7 @@ Apptad_final_projects/
 - **`prefers-reduced-motion`** support — Accessibility consideration for animations
 - **Keyboard shortcut** — `Ctrl+Enter` to analyze
 
-### Minor Issues
-- **No loading skeleton** — Results panel shows stale content during analysis
-- **No favicon** — Browser tab shows default React icon (missing from `public/`)
-- **No `<meta description>`** — SEO gap in `index.html`
-- **Font (Inter) not imported** — The CSS declares `font-family: Inter, ...` but Inter is never loaded via Google Fonts; users without Inter installed will fall back to system fonts
-- **Console error** — Failed connection attempt to port 8001 before falling back to 8000 (harmless but noisy)
 
----
 
 ## 5. Error Handling & Resilience (8.5/10) ✅
 
@@ -166,11 +129,6 @@ Apptad_final_projects/
 > [!TIP]
 > The multi-URL fallback in the frontend (`getApiUrls()`) trying 6 different host:port combinations is a clever resilience pattern for local development.
 
-### Gaps
-- **No backend error logging** — Exceptions in `get_llm_explanation` are silently caught with `except Exception: pass`
-- **No request timeout** on the predict endpoint
-- **Ollama timeout** is 30s — could block the API for a long time
-
 ---
 
 ## 6. Security (7/10) ⚠️
@@ -189,18 +147,6 @@ Apptad_final_projects/
 
 ---
 
-## 7. Testing (3/10) 🔴
-
-> [!CAUTION]
-> **No automated tests exist** — no `tests/` directory, no test files, no test runner configured. This is the weakest area.
-
-**Missing:**
-- Unit tests for `predict_text()`, `_suspicious_hits()`, `vocabulary_coverage()`
-- Integration tests for API endpoints
-- Frontend component tests
-- Edge case tests (empty input, Unicode, extremely long input, special characters)
-
----
 
 ## 8. Documentation (8.5/10) ✅
 
